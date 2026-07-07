@@ -1,0 +1,24 @@
+.loader {
+  position: fixed;
+  inset: 0;
+  background-color: var(--background-colour);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.spinner {
+  width: 5rem;
+  height: 5rem;
+  border: 0.3rem solid rgba(84, 174, 204, 0.2);
+  border-top: 0.3rem solid var(--accent-colour);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

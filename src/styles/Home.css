@@ -1,0 +1,83 @@
+.category-section {
+  height: 50vh;
+  padding: 2rem 15rem;
+}
+
+.section-heading h2 {
+  font-size: 3rem;
+}
+
+.section-subheading {
+  max-width: 70%;
+  font-family: var(--roboto);
+  opacity: 0.7;
+}
+
+.category-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 3rem 0;
+}
+
+.category-item {
+  height: 10rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 1rem;
+  text-transform: uppercase;
+  color: white;
+  background-color: red;
+}
+
+.category-item h3 {
+  font-family: var(--rubik);
+  font-weight: 500;
+}
+
+.featured-products-section {
+  height: 100vh;
+  padding: 0 15rem;
+}
+
+.latest-arrivals-section{
+    padding: 0 15rem;
+}
+
+.featured-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 18rem);
+  grid-template-areas:
+    "item-1 item-2 item-2"
+    "item-1 item-3 item-4"
+    "item-5 item-5 item-4";
+  margin: 3rem 0;
+  gap: 1rem;
+}
+
+.featured-item {
+  padding: 2rem;
+  border-radius: 1rem;
+  background: gray;
+  text-align: center;
+}
+
+.item-1 {
+  grid-area: item-1;
+}
+.item-2 {
+  grid-area: item-2;
+}
+
+.item-3 {
+  grid-area: item-3;
+}
+.item-4 {
+  grid-area: item-4;
+}
+.item-5 {
+  grid-area: item-5;
+}

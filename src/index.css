@@ -1,0 +1,46 @@
+:root {
+  --sans: system-ui, "Segoe UI", Roboto, sans-serif;
+  --heading: system-ui, "Segoe UI", Roboto, sans-serif;
+  --mono: ui-monospace, Consolas, monospace;
+
+  --accent-colour: rgb(90, 131, 255);
+  --accent-colour-dark: rgb(59, 86, 164);
+  --accent-colour-light: rgba(59, 85, 164, 0.382);
+
+  --background-colour: rgb(245, 245, 245);
+  --background: linear-gradient(180deg, #ffffff 0%, #f7f8fa 100%);
+  --background-colour-light: white;
+
+  --typography-colour: #232323;
+
+  --roboto: "Roboto", sans-serif;
+  --rubik: "Rubik", sans-serif;
+  --oswald: "Oswald", sans-serif;
+  --pinyon: "Pinyon Script", cursive;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: var(--sans);
+}
+
+main {
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--heading);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}

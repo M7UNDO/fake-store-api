@@ -1,0 +1,222 @@
+.auth-section {
+  min-height: 100vh;
+  background: url(../assets/images/hero/dion-martins-dj2iRXvat4o-unsplash.jpg);
+  background-size: cover;
+  background-position: left;
+  object-fit: contain;
+}
+
+.wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: white;
+  height: 100vh;
+  width: max(40%, 600px);
+  padding: 1rem;
+  border-radius: 3rem 0 0 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.auth-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20%;
+  margin-bottom: 5rem;
+}
+
+.auth-section h2 {
+  font-size: 1.6rem;
+  opacity: 0.7;
+  margin: 0;
+}
+
+.auth-section #auth-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  font-family: var(--primary-font);
+  font-size: 1.6rem;
+}
+
+#auth-form > div {
+  width: 100%;
+}
+
+
+.floating-input {
+  position: relative;
+  width: 100%;
+}
+
+.auth-inputs {
+  width: 100%;
+  min-width: 40rem;
+
+  font-family: var(--primary-font);
+  font-size: 1.4rem;
+
+  border-radius: 0.5rem;
+  border: 0.15rem solid rgba(128, 128, 128, 0.37);
+
+  background: white;
+
+  padding: 1.6rem 1rem 1rem;
+  padding-right: 4rem;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.auth-inputs:focus {
+  outline: none;
+  border-color: var(--accent-colour-dark);
+}
+
+.auth-inputs:hover {
+  border-color: var(--accent-colour);
+}
+
+
+.floating-input label {
+  position: absolute;
+
+  left: 1rem;
+  top: 50%;
+
+  transform: translateY(-50%);
+
+  padding: 0 0.4rem;
+
+  background: white;
+
+  font-size: 1.4rem;
+  font-weight: 500;
+
+  color: var(--typography-colour);
+  opacity: 0.75;
+
+  pointer-events: none;
+
+  transition:
+    top 0.2s ease,
+    transform 0.2s ease,
+    font-size 0.2s ease,
+    color 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* Focused OR has text */
+
+.floating-input input:focus + label,
+.floating-input input:not(:placeholder-shown) + label {
+  top: 0;
+
+  transform: translateY(-50%);
+
+  font-size: 1.2rem;
+
+  color: var(--accent-colour-dark);
+  opacity: 1;
+}
+
+
+.auth-btn {
+  cursor: pointer;
+  outline: none;
+  border: none;
+
+  border-radius: 0.5rem;
+
+  font-size: 1.6rem;
+
+  background-color: var(--accent-colour);
+
+  padding: 1rem 6rem;
+
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+
+  color: white;
+
+  transition: all 0.25s ease;
+}
+
+.auth-btn:hover {
+  transform: translateY(-4px);
+  background-color: var(--accent-colour-dark);
+}
+
+/* ============================= */
+/* Login / Signup text */
+/* ============================= */
+
+.auth-mode-container {
+  display: flex;
+  font-size: 1.2rem;
+}
+
+.auth-mode-text {
+  font-family: inherit;
+  font-size: 1.4rem;
+}
+
+.auth-mode-btn {
+  cursor: pointer;
+  background: none;
+  outline: none;
+  border: none;
+
+  color: var(--accent-colour);
+
+  transition: all 0.25s ease;
+}
+
+.auth-mode-btn:hover {
+  color: var(--accent-colour-dark);
+  text-decoration: underline;
+}
+
+/* ============================= */
+/* Password */
+/* ============================= */
+
+.password-field {
+  position: relative;
+  width: 100%;
+}
+
+#visibility-btn {
+  position: absolute;
+
+  top: 50%;
+  right: 1rem;
+
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  background: transparent;
+  border: none;
+  outline: none;
+
+  font-size: 1.4rem;
+
+  opacity: 0.6;
+
+  transition: opacity 0.2s ease;
+}
+
+#visibility-btn:hover {
+  opacity: 1;
+}

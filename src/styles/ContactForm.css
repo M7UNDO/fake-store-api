@@ -1,0 +1,109 @@
+#contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.form-header h1 {
+  font-family: var(--heading);
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--typography-colour);
+  margin: 0 0 0.6rem 0;
+}
+
+.form-header p {
+  color: #777777;
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.input-group {
+  position: relative;
+  width: 100%;
+}
+
+.contact-input {
+  width: 100%;
+  padding: 3rem 1.2rem 0.8rem 0;
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+  color: var(--typography-colour);
+  font-family: var(--sans);
+  font-size: 1.6rem;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.contact-textarea {
+  min-height: 12rem;
+  resize: vertical;
+}
+
+.input-label {
+  position: absolute;
+  left: 0;
+  top: 1.8rem;
+  color: #888888;
+  font-size: 1.6rem;
+  pointer-events: none;
+  transform-origin: left top;
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), color 0.25s ease;
+}
+
+
+.contact-input:focus + .input-label,
+.contact-input:not(:placeholder-shown) + .input-label,
+.contact-input:-webkit-autofill + .input-label,
+.contact-input:autofill + .input-label {
+  color: var(--accent-colour);
+  transform: translateY(-1.4rem) scale(0.75);
+  font-weight: 600;
+}
+
+.contact-input:-webkit-autofill,
+.contact-input:autofill {
+  -webkit-text-fill-color: var(--typography-colour) !important;
+  /* Transitions the background fill color change over a long period so it remains transparent */
+  transition: background-color 50000s ease-in-out 0s;
+  box-shadow: inset 0 0 0 1000px transparent !important;
+}
+
+.contact-input:focus {
+  border-bottom-color: var(--accent-colour);
+}
+
+.submit-btn {
+  background-color: var(--typography-colour);
+  color: var(--background-colour-light);
+  border: none;
+  border-radius: 0.8rem;
+  padding: 1.6rem 3rem;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+  margin-top: 1rem;
+  align-self: flex-start;
+}
+
+.submit-btn:hover {
+  background-color: var(--accent-colour);
+  transform: translateY(-2px);
+  box-shadow: 0 1rem 2.5rem rgba(90, 131, 255, 0.25);
+}
+
+.submit-btn svg {
+  transition: transform 0.3s ease;
+}
+
+.submit-btn:hover svg {
+  transform: translateX(4px);
+}

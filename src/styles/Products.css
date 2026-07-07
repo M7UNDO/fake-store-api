@@ -1,0 +1,19 @@
+
+.product-page{
+   
+}
+
+.product-page .hero-section{
+    height: 50vh;
+}
+
+.product-page .hero-img{
+    object-fit: cover;
+}
+
+.product-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30rem,1fr));
+    gap: 1rem;
+    padding: 0 5rem;
+}

@@ -1,0 +1,128 @@
+.contact-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh;
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+  gap: 6rem;
+  box-sizing: border-box;
+}
+
+.contact-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.details-header .subtitle {
+  font-family: var(--sans);
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  font-size: 1.2rem;
+  color: var(--accent-colour);
+  display: block;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+}
+
+.details-header h2 {
+  font-family: var(--heading);
+  font-size: 3.6rem;
+  font-weight: 700;
+  color: var(--typography-colour);
+  margin: 0 0 1.5rem 0;
+  letter-spacing: -0.02em;
+}
+
+.details-header p {
+  color: #666666;
+  line-height: 1.6;
+  font-size: 1.6rem;
+  margin-bottom: 4rem;
+  max-width: 45rem;
+}
+
+.contact-lines-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.contact-line {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.contact-icon {
+  background-color: var(--background-colour);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 50%;
+  width: 5.2rem;
+  height: 5.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent-colour);
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.contact-line:hover .contact-icon {
+  border-color: var(--accent-colour);
+  background-color: var(--background-colour-light);
+  box-shadow: 0 1rem 2rem rgba(90, 131, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.contact-icon svg {
+  stroke: var(--accent-colour);
+  stroke-width: 1.75px;
+}
+
+.contact-info-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.contact-info-text span {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #888888;
+  font-weight: 500;
+}
+
+.contact-info-text a, 
+.contact-info-text p {
+  color: var(--typography-colour);
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+.contact-info-text a:hover {
+  color: var(--accent-colour);
+}
+
+.contact-form-container {
+  flex: 1.2;
+  background-color: var(--background-colour-light);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 1.6rem;
+  padding: 4rem;
+  box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.03);
+}
+
+@media screen and (min-width: 768px) {
+  .contact-page {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 8rem;
+    padding: 8rem 4rem;
+  }
+}
