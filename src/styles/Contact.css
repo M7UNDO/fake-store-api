@@ -118,6 +118,68 @@
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.03);
 }
 
+.form-status {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: fit-content;
+  margin: 2rem auto 0;
+  padding: 0.8rem 0;
+
+  position: relative;
+
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+
+  opacity: 0;
+  transform: translateY(0.8rem);
+
+  animation: statusReveal 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.form-status::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.3rem;
+
+  width: 100%;
+  height: 3px;
+  border-radius: 5rem;
+
+  transform: scaleX(0);
+  transform-origin: center;
+
+  transition: transform 0.4s ease;
+}
+
+.form-status.success {
+  color: var(--typography-colour);
+}
+
+.form-status.success::after {
+  background: #4ade80;
+  transform: scaleX(1);
+}
+
+.form-status.error {
+  color: var(--typography-colour);
+}
+
+.form-status.error::after {
+  background: #ef4444;
+  transform: scaleX(1);
+}
+
+@keyframes statusReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media screen and (min-width: 768px) {
   .contact-page {
     flex-direction: row;
