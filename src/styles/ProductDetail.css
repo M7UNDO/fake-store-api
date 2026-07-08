@@ -64,7 +64,7 @@
     background: var(--accent-colour-dark);
 }
 
-.wishlist-btn {
+.favourite-btn {
   color: black;
   display: flex;
   align-items: center;
@@ -72,8 +72,24 @@
   border: 1px solid rgba(0, 0, 0, 0.275);
 }
 
-.wishlist-btn:hover {
+.favourite-btn:hover {
   border-color: black;
+}
+
+.favourite-btn svg {
+  width: 2rem;
+  height: 2rem;
+  transition: fill 0.2s ease, color 0.2s ease;
+}
+
+.favourite-btn.active {
+  color: #ff385c;
+  border-color: #ff385c;
+}
+
+.favourite-btn.active:hover {
+  border-color: #ff385c;
+  background: #fff0f2;
 }
 
 .size-container{

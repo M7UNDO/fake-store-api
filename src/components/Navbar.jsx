@@ -1,22 +1,22 @@
 import {useContext, useState, useEffect} from "react";
 import {NavLink, Link, useLocation} from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import {CartContext} from "../context/CartContext";
 import {navLinks} from "../../constants";
 import "../styles/Navbar.css";
 
 export default function Navbar() {
   const {user, logout} = useContext(AuthContext);
+  const {totalItemsCount} = useContext(CartContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
-  // Automatically lock scroll or close menu on navigation mutations
   useEffect(() => {
     setIsMenuOpen(false);
   }, [location]);
 
   return (
     <nav className="navbar-element">
-      {/* Premium Top Sub-Navigation Layer */}
       <div className="topbar">
         <div className="topbar-inner">
           <span className="topbar-link">Help & Support</span>
@@ -117,7 +117,7 @@ export default function Navbar() {
           <Link to="/cart" className="bag-icon-container">
             <div className="bag-icon-frame">
               <i className="fa-solid fa-bag-shopping"></i>
-              <span className="cart-badge-counter">1</span>
+              {totalItemsCount > 0 && <span className="cart-badge-counter">{totalItemsCount}</span>}
             </div>
           </Link>
         </div>

@@ -1,5 +1,5 @@
-import {useEffect, useState} from "react";
-import {getProducts} from "../api/products";
+import { useEffect, useState } from "react";
+import { getProducts } from "../api/products";
 import ProductCard from "../components/ProductCard";
 import Hero from "../components/Hero";
 import Loader from "../components/Loader";
@@ -22,7 +22,7 @@ export default function Products() {
     loadProducts();
   }, []);
 
-  if (!products) {
+  if (products.length === 0) {
     return <Loader />;
   }
 

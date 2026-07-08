@@ -1,9 +1,49 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import Hero from "../components/Hero";
+import ProductCard from "../components/ProductCard";
+import Loader from "../components/Loader";
+import {getProducts} from "../api/products";
 import ClothingHero from "../assets/images/hero/alvin-MYfq3tf34p8-unsplash.jpg";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "../styles/Home.css";
+import Slider from "react-slick";
 
 export default function Home() {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function fetchHomeData() {
+      try {
+        const data = await getProducts();
+        setProducts(data);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchHomeData();
+  }, []);
+
+  if (loading) return <Loader />;
+
+   console.log("Slider:", Slider);
+
+  const sliderSettings = {
+    dots: true,
+    infinite:false,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    responsive: [
+      {breakpoint: 1024, settings: {slidesToShow: 3}},
+      {breakpoint: 768, settings: {slidesToShow: 2}},
+      {breakpoint: 480, settings: {slidesToShow: 1}},
+    ],
+  };
+
   return (
     <>
       <Hero
@@ -25,13 +65,13 @@ export default function Home() {
         </div>
 
         <div className="category-container">
-          <div className="category-item">
+          <div className="category-item clothing-cat">
             <h3>Clothing</h3>
           </div>
-          <div className="category-item">
+          <div className="category-item jewel-cat">
             <h3>Accessories</h3>
           </div>
-          <div className="category-item">
+          <div className="category-item electronics-cat">
             <h3>Electronics</h3>
           </div>
         </div>
@@ -46,11 +86,18 @@ export default function Home() {
         </div>
 
         <div className="featured-grid">
-          <div className="featured-item item-1">Item 1</div>
-          <div className="featured-item item-2">Item 2</div>
-          <div className="featured-item item-3">Item 3</div>
-          <div className="featured-item item-4">Item 4</div>
-          <div className="featured-item item-5">Item 5</div>
+          {products.slice(0, 5).map((product, idx) => (
+            <div
+              key={product.id}
+              className={`featured-item item-${idx + 1}`}
+              style={{backgroundImage: `url(${product.image})`}}
+            >
+              <div className="featured-item-overlay">
+                <h4>{product.title}</h4>
+                <p>R {product.price}</p>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -61,8 +108,22 @@ export default function Home() {
             Stay ahead of the curve with our newest releases. Each item is handpicked for quality, design, and
             originality, explore what's trending this season.
           </p>
-
-          <div className="latest-arrival-container"></div>
+        </div>
+        <div className="latest-arrival-container">
+          <Slider {...sliderSettings}>
+            {products.slice(5, 12).map((product) => (
+              <div key={product.id} className="carousel-card-wrapper">
+                <ProductCard
+                  src={product.image}
+                  alt={product.description}
+                  title={product.title}
+                  category={product.category}
+                  price={`R ${product.price}`}
+                  link={product.id}
+                />
+              </div>
+            ))}
+          </Slider>*/
         </div>
       </section>
     </>

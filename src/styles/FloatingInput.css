@@ -7,7 +7,6 @@
   position: absolute;
   left: 1rem;
   top: 50%;
-
   transform: translateY(-50%);
   background: white;
   padding: 0 0.4rem;
@@ -21,10 +20,18 @@
     color 0.2s ease;
 }
 
+/*Combinign focus, non-empty, AND autofill states */
 .floating-input input:focus + label,
-.floating-input input:not(:placeholder-shown) + label {
+.floating-input input:not(:placeholder-shown) + label,
+.floating-input input:-webkit-autofill + label {
   top: 0;
   transform: translateY(-50%);
   font-size: 1.2rem;
   color: var(--accent-colour-dark);
+}
+
+/*Autofill bg clean */
+.floating-input input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px white inset !important;
+  transition: background-color 5000s ease-in-out 0s;
 }

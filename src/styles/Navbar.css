@@ -13,7 +13,6 @@
   flex-direction: column;
 }
 
-
 .topbar {
   width: 100%;
   background-color: var(--typography-colour);
@@ -222,13 +221,11 @@
   color: var(--accent-colour);
 }
 
-
 .nav-utility-actions {
   display: flex;
   align-items: center;
   gap: 2.5rem;
 }
-
 
 .search-bar-wrapper {
   position: relative;
@@ -283,7 +280,6 @@
   background-color: var(--accent-colour);
 }
 
-/* Curated Bag Mechanics */
 .bag-icon-container {
   color: var(--typography-colour);
   text-decoration: none;
@@ -320,7 +316,6 @@
   border: 2px solid var(--background-colour-light);
 }
 
-
 .mobile-hamburger-trigger {
   display: none;
 }
@@ -345,7 +340,6 @@
     cursor: pointer;
     z-index: 1005;
   }
-
 
   .burger-active span:nth-child(1) {
     transform: rotate(45deg) translateY(-0.1rem);

@@ -17,23 +17,19 @@
 }
 
 .details-header .subtitle {
-  font-family: var(--sans);
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
-  font-size: 1.2rem;
+  font-family: var(--pinyon);
+  font-size: 2.5rem;
   color: var(--accent-colour);
   display: block;
   margin-bottom: 0.8rem;
-  font-weight: 600;
 }
 
 .details-header h2 {
-  font-family: var(--heading);
-  font-size: 3.6rem;
-  font-weight: 700;
-  color: var(--typography-colour);
-  margin: 0 0 1.5rem 0;
-  letter-spacing: -0.02em;
+  font-family: var(--oswald);
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.4rem;
+  font-weight: 400;
 }
 
 .details-header p {

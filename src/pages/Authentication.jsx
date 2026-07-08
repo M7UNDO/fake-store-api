@@ -4,6 +4,7 @@ import {validateAuth} from "../components/ValidateAuth";
 import {supabase} from "../services/supabaseClient";
 
 import FloatingInput from "../components/FloatingInput";
+import ButtonSpinner from "../components/ButtonSpinner";
 import VisbilityOn from "../assets/icons/eye.svg";
 import VisbilityOff from "../assets/icons/eye-off.svg";
 
@@ -19,6 +20,7 @@ export default function Authentication({mode}) {
   const [repeatPassword, setRepeatPassword] = useState("");
   const [isVisible, setIsVisible] = useState(false);
   const [error, setError] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -42,6 +44,7 @@ export default function Authentication({mode}) {
     setPassword("");
     setRepeatPassword("");
     setError("");
+    setIsLoading(false);
   }, [mode]);
 
   async function handleSubmit(e) {
@@ -61,8 +64,10 @@ export default function Authentication({mode}) {
       return;
     }
 
+    setIsLoading(true);
+
     try {
-      if ( isLoggedIn) {
+      if (isLoggedIn) {
         const {error} = await supabase.auth.signInWithPassword({
           email,
           password,
@@ -88,6 +93,7 @@ export default function Authentication({mode}) {
       }
     } catch (err) {
       setError(err.message);
+      setIsLoading(false);
     }
   }
 
@@ -96,7 +102,7 @@ export default function Authentication({mode}) {
       <div className="wrapper">
         <div className="auth-heading">
           <p className="logo">The Pavillion</p>
-          <h1>{isLoggedIn ? "Login" : "Create an account"}</h1>
+          <h1>{isLoggedIn ? "Log In" : "Create an account"}</h1>
         </div>
 
         <form id="auth-form" onSubmit={handleSubmit}>
@@ -109,10 +115,12 @@ export default function Authentication({mode}) {
                 onChange={(e) => setUsername(e.target.value)}
               />
 
-              <FloatingInput id="surname"
-               label="Surname" 
-               value={surname}
-               onChange={(e)=> setSurname(e.target.value)}/>
+              <FloatingInput
+                id="surname"
+                label="Surname"
+                value={surname}
+                onChange={(e) => setSurname(e.target.value)}
+              />
             </>
           )}
 
@@ -132,7 +140,7 @@ export default function Authentication({mode}) {
             onChange={(e) => setPassword(e.target.value)}
           >
             <button type="button" onClick={toggleVisbility} id="visibility-btn">
-              <i className={isVisible? "fa-regular fa-eye-slash": "fa-regular fa-eye"}></i>
+              <i className={isVisible ? "fa-regular fa-eye-slash" : "fa-regular fa-eye"}></i>
             </button>
           </FloatingInput>
 
@@ -146,7 +154,7 @@ export default function Authentication({mode}) {
                 onChange={(e) => setRepeatPassword(e.target.value)}
               >
                 <button type="button" onClick={toggleVisbility} id="visibility-btn">
-                  <i className={isVisible?"fa-regular fa-eye-slash": "fa-regular fa-eye"}></i>
+                  <i className={isVisible ? "fa-regular fa-eye-slash" : "fa-regular fa-eye"}></i>
                 </button>
               </FloatingInput>
             </>
@@ -154,8 +162,9 @@ export default function Authentication({mode}) {
 
           {error && <p style={{color: "red"}}>{error}</p>}
 
-          <button type="submit" onClick={handleSubmit} className="auth-btn">
-            {isLoggedIn ? "Login" : "Sign Up"}
+          <button type="submit" className="auth-btn" disabled={isLoading}>
+
+            {isLoading ? <><span>Loading </span><ButtonSpinner /> </>: isLoggedIn ? "Login" : "Sign Up"}
           </button>
 
           <p className="auth-mode-text">
