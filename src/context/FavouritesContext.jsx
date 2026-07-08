@@ -2,19 +2,19 @@ import React, { createContext, useState, useEffect } from "react";
 
 export const FavouritesContext = createContext();
 
-export function FavouritesProvider({ children }) {
+export const FavouritesProvider = ({ children }) => {
   const [favourites, setFavourites] = useState(() => {
-    const saved = localStorage.getItem("favourites");
-    return saved ? JSON.parse(saved) : [];
+    const savedFavs = localStorage.getItem("pavilion_favs");
+    return savedFavs ? JSON.parse(savedFavs) : [];
   });
 
   useEffect(() => {
-    localStorage.setItem("favourites", JSON.stringify(favourites));
+    localStorage.setItem("pavilion_favs", JSON.stringify(favourites));
   }, [favourites]);
 
   const toggleFavourite = (product) => {
     setFavourites((prev) => {
-      const exists = prev.some((item) => item.id === product.id);
+      const exists = prev.find((item) => item.id === product.id);
       if (exists) {
         return prev.filter((item) => item.id !== product.id);
       } else {
@@ -23,13 +23,11 @@ export function FavouritesProvider({ children }) {
     });
   };
 
-  const isFavourite = (id) => {
-    return favourites.some((item) => item.id === id);
-  };
+  const isFavourite = (id) => favourites.some((item) => item.id === id);
 
   return (
     <FavouritesContext.Provider value={{ favourites, toggleFavourite, isFavourite }}>
       {children}
     </FavouritesContext.Provider>
   );
-}
+};

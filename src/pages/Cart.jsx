@@ -16,42 +16,51 @@ export default function Cart() {
   if (cartItems.length === 0) {
     return (
       <div className="empty-cart-view">
-        <i className="fa-solid fa-bag-shopping empty-icon"></i>
-        <h2>Your Shopping Bag is empty</h2>
-        <p>Discover minimal staples, custom tailoring, and contemporary tech options built to last.</p>
-        <Link to="/products" className="continue-shop-btn">Continue Shopping</Link>
+        <div className="empty-cart-content">
+          <i className="fa-solid fa-bag-shopping empty-icon"></i>
+          <h2>Your Shopping Bag is Empty</h2>
+          <p>Discover minimal staples, custom tailoring, and contemporary tech options built to last.</p>
+          <Link to="/products" className="continue-shop-btn">Continue Shopping</Link>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="cart-page-container">
-      <h1>Your Shopping Bag</h1>
+      <div className="cart-header-wrapper">
+        <h1 className="cart-title">Your Shopping Bag</h1>
+        <span className="cart-count-tracker">({cartItems.reduce((a, b) => a + b.quantity, 0)} items)</span>
+      </div>
 
       <div className="cart-layout-grid">
         <div className="cart-items-list">
           {cartItems.map((item) => (
             <div key={item.id} className="cart-item-row">
-              <img src={item.image} alt={item.title} className="cart-row-img" />
+              <div className="cart-img-box">
+                <img src={item.image} alt={item.title} className="cart-row-img" />
+              </div>
               
               <div className="cart-row-details">
-                <h3>{item.title}</h3>
-                <p className="cart-row-category">{item.category}</p>
-                <p className="cart-row-unit-price">R {item.price}</p>
+                <div className="details-header">
+                  <h3>{item.title}</h3>
+                  <p className="cart-row-category">{item.category}</p>
+                </div>
+                <p className="cart-row-unit-price">R {Number(item.price).toFixed(2)}</p>
               </div>
 
               <div className="quantity-controller">
-                <button onClick={() => updateQuantity(item.id, -1)} aria-label="Decrease state">
+                <button onClick={() => updateQuantity(item.id, -1)} aria-label="Decrease quantity">
                   <i className="fa-solid fa-minus"></i>
                 </button>
                 <span className="qty-indicator">{item.quantity}</span>
-                <button onClick={() => updateQuantity(item.id, 1)} aria-label="Increase state">
+                <button onClick={() => updateQuantity(item.id, 1)} aria-label="Increase quantity">
                   <i className="fa-solid fa-plus"></i>
                 </button>
               </div>
 
               <div className="cart-row-total">
-                <p>R {item.price * item.quantity}</p>
+                <p>R {(item.price * item.quantity).toFixed(2)}</p>
               </div>
             </div>
           ))}
@@ -61,20 +70,20 @@ export default function Cart() {
           <h2>Summary</h2>
           <div className="summary-line">
             <span>Subtotal</span>
-            <span>R {totalPrice}</span>
+            <span className="value-light">R {totalPrice}</span>
           </div>
           <div className="summary-line">
             <span>Estimated Shipping</span>
             <span className="free-badge">Complimentary</span>
           </div>
-          <hr />
+          <hr className="summary-divider" />
           <div className="summary-line total-line">
             <span>Total Owed</span>
-            <span>R {totalPrice}</span>
+            <span className="final-total-val">R {totalPrice}</span>
           </div>
 
           <button className="checkout-cta-btn" onClick={handleCheckout}>
-            Proceed to Checkout
+            Proceed to Checkout <i className="fa-solid fa-arrow-right-long icon-shift"></i>
           </button>
         </div>
       </div>
