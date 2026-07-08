@@ -1,6 +1,120 @@
-.searchbar-container{
-    position: fixed;
-    height: 30vh;
-    background: white;
+.search-bar-wrapper {
+  position: relative;
+  width: 32rem;
+}
 
+.search-form {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.global-search-field {
+  width: 100%;
+  padding: 1rem 4rem 1rem 1.5rem;
+  font-size: 1.4rem;
+  border: 1px solid #e5e5e5;
+  border-radius: 2rem;
+  background-color: #f5f5f5;
+  outline: none;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.global-search-field:focus {
+  background-color: #ffffff;
+  border-color: #111111;
+}
+
+.search-submit-icon {
+  position: absolute;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.6rem;
+  color: #111111;
+}
+
+.search-predictive-dropdown {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 0.4rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  max-height: 40rem;
+  overflow-y: auto;
+}
+
+.dropdown-section-title {
+  padding: 1.2rem 1.5rem 0.6rem 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #767676;
+  letter-spacing: 0.05em;
+}
+
+.suggestions-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.suggestion-item {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  color: #111111;
+  transition: background-color 0.15s ease;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background-color: #f9f9f9;
+}
+
+.suggestion-img {
+  width: 4.5rem;
+  height: 4.5rem;
+  object-fit: contain;
+  background: #ffffff;
+  flex-shrink: 0;
+}
+
+.suggestion-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.suggestion-title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.suggestion-price {
+  font-size: 1.2rem;
+  color: #ff385c;
+  font-weight: 600;
+  margin-top: 0.2rem;
+}
+
+.no-results-message {
+  padding: 2rem 1.5rem;
+  font-size: 1.3rem;
+  color: #767676;
+  text-align: center;
 }

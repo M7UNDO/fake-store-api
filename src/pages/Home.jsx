@@ -110,7 +110,7 @@ export default function Home() {
           </p>
         </div>
         <div className="latest-arrival-container">
-          <Slider {...sliderSettings}>
+          {/*<Slider {...sliderSettings}>
             {products.slice(5, 12).map((product) => (
               <div key={product.id} className="carousel-card-wrapper">
                 <ProductCard
@@ -123,7 +123,7 @@ export default function Home() {
                 />
               </div>
             ))}
-          </Slider>*/
+          </Slider>*/}
         </div>
       </section>
     </>

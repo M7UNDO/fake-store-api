@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { getProducts } from "../api/products";
 import ProductCard from "../components/ProductCard";
 import Hero from "../components/Hero";
@@ -8,19 +9,36 @@ import "../styles/Products.css";
 
 export default function Products() {
   const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     async function loadProducts() {
       try {
         const data = await getProducts();
         setProducts(data);
+        setFilteredProducts(data);
       } catch (error) {
         console.log(error);
       }
     }
-
     loadProducts();
   }, []);
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(location.search);
+    const searchTerm = searchParams.get("search");
+
+    if (!searchTerm) {
+      setFilteredProducts(products);
+    } else {
+      const filtered = products.filter((product) =>
+        product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        product.category.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredProducts(filtered);
+    }
+  }, [location.search, products]);
 
   if (products.length === 0) {
     return <Loader />;
@@ -37,7 +55,7 @@ export default function Products() {
       <section className="product-section">
         <h2>Products</h2>
         <div className="product-grid">
-          {products.map((product) => (
+          {filteredProducts.map((product) => (
             <ProductCard
               key={product.id}
               src={product.image}

@@ -3,6 +3,7 @@ import {NavLink, Link, useLocation} from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import {CartContext} from "../context/CartContext";
 import {navLinks} from "../../constants";
+import Searchbar from "./Searchbar";
 import "../styles/Navbar.css";
 
 export default function Navbar() {
@@ -107,12 +108,7 @@ export default function Navbar() {
         </ul>
 
         <div className="nav-utility-actions">
-          <div className="search-bar-wrapper">
-            <input type="text" className="global-search-field" placeholder="Search curated goods..." />
-            <button className="search-submit-icon" aria-label="Execute Query">
-              <i className="fa-solid fa-magnifying-glass"></i>
-            </button>
-          </div>
+          <Searchbar />
 
           <Link to="/cart" className="bag-icon-container">
             <div className="bag-icon-frame">
