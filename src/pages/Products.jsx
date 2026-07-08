@@ -1,6 +1,6 @@
-import { useEffect, useState } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
-import { getProducts } from "../api/products";
+import {useEffect, useState} from "react";
+import {useLocation, useSearchParams} from "react-router-dom";
+import {getProducts} from "../api/products";
 import ProductCard from "../components/ProductCard";
 import Hero from "../components/Hero";
 import Loader from "../components/Loader";
@@ -12,7 +12,7 @@ export default function Products() {
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
-  
+
   const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
 
@@ -39,9 +39,10 @@ export default function Products() {
     let result = [...products];
 
     if (currentSearch) {
-      result = result.filter((p) =>
-        p.title.toLowerCase().includes(currentSearch.toLowerCase()) ||
-        p.description.toLowerCase().includes(currentSearch.toLowerCase())
+      result = result.filter(
+        (p) =>
+          p.title.toLowerCase().includes(currentSearch.toLowerCase()) ||
+          p.description.toLowerCase().includes(currentSearch.toLowerCase()),
       );
     }
 
@@ -99,9 +100,7 @@ export default function Products() {
                 <h1 className="search-term">"{currentSearch}"</h1>
               </>
             )}
-            {!currentSearch && currentCategory && (
-              <h1 className="search-term-category">{currentCategory}</h1>
-            )}
+            {!currentSearch && currentCategory && <h1 className="search-term-category">{currentCategory}</h1>}
             {!currentSearch && !currentCategory && <h1 className="search-term-category">All Products</h1>}
             <span className="results-counter">({filteredProducts.length})</span>
           </div>
@@ -138,19 +137,19 @@ export default function Products() {
         <div className="drawer-body-scroll">
           <div className="filter-group-section">
             <h3>Sort By</h3>
-            <button 
+            <button
               className={`filter-option-row ${currentSort === "price-low" ? "selected" : ""}`}
               onClick={() => handleFilterChange("sort", "price-low")}
             >
               Price Low to High
             </button>
-            <button 
+            <button
               className={`filter-option-row ${currentSort === "price-high" ? "selected" : ""}`}
               onClick={() => handleFilterChange("sort", "price-high")}
             >
               Price High to Low
             </button>
-            <button 
+            <button
               className={`filter-option-row ${currentSort === "rating" ? "selected" : ""}`}
               onClick={() => handleFilterChange("sort", "rating")}
             >
@@ -160,26 +159,31 @@ export default function Products() {
 
           <div className="filter-group-section">
             <h3>Price Ranges</h3>
-            <button 
-              className={`filter-option-row ${currentPriceRange === "0-50" ? "selected" : ""}`}
-              onClick={() => handleFilterChange("priceRange", "0-50")}
+            <button
+              className={`filter-option-row ${currentPriceRange === "0-500" ? "selected" : ""}`}
+              onClick={() => handleFilterChange("priceRange", "0-500")}
             >
-              R 0.00 - R 50.00
+              R 0.00 - R 500.00
             </button>
-            <button 
-              className={`filter-option-row ${currentPriceRange === "50-100" ? "selected" : ""}`}
-              onClick={() => handleFilterChange("priceRange", "50-100")}
+            <button
+              className={`filter-option-row ${currentPriceRange === "500-1500" ? "selected" : ""}`}
+              onClick={() => handleFilterChange("priceRange", "500-1500")}
             >
-              R 50.00 - R 100.00
+              R 500.00 - R 1,500.00
             </button>
-            <button 
-              className={`filter-option-row ${currentPriceRange === "100-500" ? "selected" : ""}`}
-              onClick={() => handleFilterChange("priceRange", "100-500")}
+            <button
+              className={`filter-option-row ${currentPriceRange === "1500-3000" ? "selected" : ""}`}
+              onClick={() => handleFilterChange("priceRange", "1500-3000")}
             >
-              R 100.00 - R 50.000
+              R 1,500.00 - R 3,000.00
+            </button>
+            <button
+              className={`filter-option-row ${currentPriceRange === "3000+" ? "selected" : ""}`}
+              onClick={() => handleFilterChange("priceRange", "3000+")}
+            >
+              R 3,000.00+
             </button>
           </div>
-
           <div className="filter-group-section">
             <h3>Categories</h3>
             {["men's clothing", "women's clothing", "jewelery", "electronics"].map((cat) => (
@@ -195,13 +199,15 @@ export default function Products() {
         </div>
 
         <div className="drawer-footer-actions">
-          <button className="clear-all-btn" onClick={clearAllFilters}>Clear All</button>
+          <button className="clear-all-btn" onClick={clearAllFilters}>
+            Clear All
+          </button>
           <button className="apply-results-btn" onClick={() => setIsFilterOpen(false)}>
             Apply ({filteredProducts.length})
           </button>
         </div>
       </div>
-      
+
       {isFilterOpen && <div className="drawer-backdrop-blur" onClick={() => setIsFilterOpen(false)}></div>}
     </div>
   );

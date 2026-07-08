@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./context/AuthContext";
 import { CartProvider } from "./context/CartContext";
 import { FavouritesProvider } from "./context/FavouritesContext";
@@ -24,7 +24,7 @@ function App() {
       <AuthProvider>
         <CartProvider>
           <FavouritesProvider>
-            <BrowserRouter>
+            <HashRouter>
               <Routes>
                 <Route element={<MainLayout />}>
                   <Route path="/" element={<Home />} />
@@ -43,7 +43,7 @@ function App() {
 
                 <Route path="*" element={<NotFound />} />
               </Routes>
-            </BrowserRouter>
+            </HashRouter>
           </FavouritesProvider>
         </CartProvider>
       </AuthProvider>
