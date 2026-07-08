@@ -1,4 +1,4 @@
-.product-card{
+.product-card {
     position: relative;
     width: 100%;
     background-color: white;
@@ -6,34 +6,33 @@
     transition: all 0.25s ease;
 }
 
-.product-card:hover{
+.product-card:hover {
     transform: translateY(-4px);
-
 }
 
-.product-card-info{
+.product-card-info {
     padding-top: 1rem;
     display: flex;
     flex-direction: column;
 }
 
-.product-title{
+.product-title {
     font-weight: 600;
-    
 }
-.product-category{
+
+.product-category {
     color: gray;
     font-weight: 450;
     text-transform: capitalize;
-
 }
-.product-price{
+
+.product-price {
     margin-top: 0.5rem;
     font-family: var(--roboto);
     font-weight: 700;
 }
 
-.image-holder{
+.image-holder {
     position: relative;
     display: flex;
     justify-content: center;
@@ -42,18 +41,49 @@
     background: whitesmoke;
 }
 
-.product-link-overlay{
+.product-link-overlay {
     position: absolute;
     height: 100%;
     width: 100%;
 }
 
-.product-image{
+.product-image {
     width: 70%;
     max-height: 70%;
     object-fit: contain;
 }
 
+/* --- Added Quick Add Overlay Button Rules --- */
+.quick-add-overlay-btn {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  background: white;
+  border: none;
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+  z-index: 5;
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  color: #111;
+}
+
+.quick-add-overlay-btn i {
+  font-size: 1.4rem;
+}
+
+.quick-add-overlay-btn:hover {
+  background-color: #111111;
+  color: #ffffff;
+  transform: scale(1.05) !important;
+}
+
+/* --- Wishlist Base Layout Controls --- */
 .wishlist-overlay-btn {
   position: absolute;
   top: 1.5rem;
@@ -83,6 +113,7 @@
   color: #ff385c;
 }
 
+/* --- Interaction System Responsive Viewports --- */
 @media (min-width: 1024px) {
   .wishlist-overlay-btn {
     opacity: 0;
@@ -98,8 +129,23 @@
     opacity: 1;
     transform: translateY(0);
   }
+
+  /* Slide in Quick Add button smoothly from the left side on desktop cards */
+  .quick-add-overlay-btn {
+    opacity: 0;
+    transform: translateX(-4px);
+  }
+
+  .product-card:hover .quick-add-overlay-btn {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .wishlist-overlay-btn:hover {
   transform: scale(1.05) !important;
+}
+
+.card-add-to-bag-btn {
+    /* Retains your exact standard list add button layout settings below */
 }

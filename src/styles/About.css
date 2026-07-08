@@ -4,6 +4,7 @@
   padding: 8rem 2.4rem;
   color: var(--typography-colour);
   line-height: 1.8;
+  margin-bottom: 5rem;
 }
 
 .about-hero {
@@ -21,11 +22,10 @@
 }
 
 .about-title {
-  font-family: var(--oswald);
+  font-family: var(--heading);
   font-size: 5rem;
   text-transform: uppercase;
-  letter-spacing: 0.4rem;
-  font-weight: 400;
+  font-weight: 700;
   margin-bottom: 2.4rem;
 }
 

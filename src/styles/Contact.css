@@ -25,11 +25,10 @@
 }
 
 .details-header h2 {
-  font-family: var(--oswald);
+  font-family: var(--heading);
   font-size: 2rem;
   text-transform: uppercase;
-  letter-spacing: 0.4rem;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 .details-header p {

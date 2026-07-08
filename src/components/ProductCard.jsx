@@ -14,6 +14,7 @@ export default function ProductCard({ src, alt, title, category, price, link }) 
 
   const handleAddToBag = (e) => {
     e.preventDefault();
+    e.stopPropagation();
     addToCart({
       id: link,
       title,
@@ -43,6 +44,14 @@ export default function ProductCard({ src, alt, title, category, price, link }) 
         <img className="product-image" src={src} alt={alt} />
         <Link to={`/products/${link}`} className="product-link-overlay"></Link>
         <button 
+          className="quick-add-overlay-btn" 
+          onClick={handleAddToBag}
+          aria-label="Quick Add to Bag"
+        >
+          <i className="fa-solid fa-bag-shopping"></i>
+        </button>
+
+        <button 
           className={`wishlist-overlay-btn ${favourited ? "active" : ""}`} 
           onClick={handleFavouriteClick}
           aria-label="Toggle Favourite"
@@ -57,9 +66,6 @@ export default function ProductCard({ src, alt, title, category, price, link }) 
         <div className="product-title">{title}</div>
         <div className="product-category">{category}</div>
         <div className="product-price">{price}</div>
-        <button className="card-add-to-bag-btn" onClick={handleAddToBag}>
-          {currentQuantity > 0 ? `Add to Bag (${currentQuantity})` : "Add to Bag"}
-        </button>
       </div>
     </figure>
   );

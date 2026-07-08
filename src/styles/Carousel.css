@@ -1,0 +1,61 @@
+.custom-carousel-container {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.carousel-window {
+  overflow: hidden;
+  width: 100%;
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.carousel-slide-item {
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Luxury Action Ring Navigation Toggles */
+.carousel-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4.5rem;
+  height: 4.5rem;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  color: #111111;
+  cursor: pointer;
+  z-index: 15;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s, opacity 0.2s;
+}
+
+.prev-btn {
+  left: -2rem;
+}
+
+.next-btn {
+  right: -2rem;
+}
+
+.carousel-nav-btn:hover {
+  background-color: #111111;
+  color: #ffffff;
+}
+
+.carousel-nav-btn:active {
+  transform: translateY(-50%) scale(0.95);
+}

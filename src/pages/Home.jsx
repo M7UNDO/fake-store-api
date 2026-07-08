@@ -1,17 +1,19 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Hero from "../components/Hero";
 import ProductCard from "../components/ProductCard";
 import Loader from "../components/Loader";
-import {getProducts} from "../api/products";
+import { getProducts } from "../api/products";
 import ClothingHero from "../assets/images/hero/alvin-MYfq3tf34p8-unsplash.jpg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "../styles/Home.css";
-import Slider from "react-slick";
+// import Slider from "react-slick"; // Keeping slider elements inactive per instruction
 
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     async function fetchHomeData() {
@@ -28,21 +30,6 @@ export default function Home() {
   }, []);
 
   if (loading) return <Loader />;
-
-   console.log("Slider:", Slider);
-
-  const sliderSettings = {
-    dots: true,
-    infinite:false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 1,
-    responsive: [
-      {breakpoint: 1024, settings: {slidesToShow: 3}},
-      {breakpoint: 768, settings: {slidesToShow: 2}},
-      {breakpoint: 480, settings: {slidesToShow: 1}},
-    ],
-  };
 
   return (
     <>
@@ -64,14 +51,27 @@ export default function Home() {
           </p>
         </div>
 
+        {/* Responsive, interactive category boxes linked to routing queries */}
         <div className="category-container">
-          <div className="category-item clothing-cat">
+          <div 
+            className="category-item clothing-cat" 
+            onClick={() => navigate("/products?category=men's clothing")}
+            style={{ cursor: "pointer" }}
+          >
             <h3>Clothing</h3>
           </div>
-          <div className="category-item jewel-cat">
+          <div 
+            className="category-item jewel-cat" 
+            onClick={() => navigate("/products?category=jewelery")}
+            style={{ cursor: "pointer" }}
+          >
             <h3>Accessories</h3>
           </div>
-          <div className="category-item electronics-cat">
+          <div 
+            className="category-item electronics-cat" 
+            onClick={() => navigate("/products?category=electronics")}
+            style={{ cursor: "pointer" }}
+          >
             <h3>Electronics</h3>
           </div>
         </div>
@@ -90,7 +90,8 @@ export default function Home() {
             <div
               key={product.id}
               className={`featured-item item-${idx + 1}`}
-              style={{backgroundImage: `url(${product.image})`}}
+              style={{ backgroundImage: `url(${product.image})`, cursor: "pointer" }}
+              onClick={() => navigate(`/products/${product.id}`)}
             >
               <div className="featured-item-overlay">
                 <h4>{product.title}</h4>
@@ -109,21 +110,21 @@ export default function Home() {
             originality, explore what's trending this season.
           </p>
         </div>
-        <div className="latest-arrival-container">
-          {/*<Slider {...sliderSettings}>
-            {products.slice(5, 12).map((product) => (
-              <div key={product.id} className="carousel-card-wrapper">
-                <ProductCard
-                  src={product.image}
-                  alt={product.description}
-                  title={product.title}
-                  category={product.category}
-                  price={`R ${product.price}`}
-                  link={product.id}
-                />
-              </div>
-            ))}
-          </Slider>*/}
+        
+        {/* Swapped to a clean responsive fallback grid framework while the carousel is disabled */}
+        <div className="latest-arrival-container fallback-static-grid">
+          {products.slice(5, 9).map((product) => (
+            <div key={product.id} className="carousel-card-wrapper">
+              <ProductCard
+                src={product.image}
+                alt={product.description}
+                title={product.title}
+                category={product.category}
+                price={`R ${product.price}`}
+                link={product.id}
+              />
+            </div>
+          ))}
         </div>
       </section>
     </>
