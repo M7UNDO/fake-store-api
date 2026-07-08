@@ -1,16 +1,17 @@
-import {useContext, useState, useEffect} from "react";
-import {NavLink, Link, useLocation} from "react-router-dom";
+import { useContext, useState, useEffect } from "react";
+import { NavLink, Link, useLocation, useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
-import {CartContext} from "../context/CartContext";
-import {navLinks} from "../../constants";
+import { CartContext } from "../context/CartContext";
+import { navLinks } from "../../constants";
 import Searchbar from "./Searchbar";
 import "../styles/Navbar.css";
 
 export default function Navbar() {
-  const {user, logout} = useContext(AuthContext);
-  const {totalItemsCount} = useContext(CartContext);
+  const { user, logout } = useContext(AuthContext);
+  const { totalItemsCount } = useContext(CartContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     setIsMenuOpen(false);
@@ -36,7 +37,7 @@ export default function Navbar() {
               <div className="user-dropdown-menu">
                 <h4>Account Management</h4>
                 <button className="dropdown-action-btn">Profile Settings</button>
-                <Link to="/wishlist" className="dropdown-action-btn">
+                <Link to="/Favourites" className="dropdown-action-btn">
                   My Wishlist
                 </Link>
                 <button className="dropdown-action-btn logout-accent" onClick={logout}>
@@ -62,10 +63,10 @@ export default function Navbar() {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-x-icon lucide-x"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-x-icon lucide-x"
             >
               <path d="M18 6 6 18" />
               <path d="m6 6 12 12" />
@@ -78,10 +79,10 @@ export default function Navbar() {
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              class="lucide lucide-menu-icon lucide-menu"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              className="lucide lucide-menu-icon lucide-menu"
             >
               <path d="M4 5h16" />
               <path d="M4 12h16" />
@@ -96,13 +97,31 @@ export default function Navbar() {
 
         <ul className={`navlinks-list ${isMenuOpen ? "mobile-drawer-open" : ""}`}>
           {navLinks.map((link) => (
-            <li key={link.id} className="nav-item-node">
+            <li 
+              key={link.id} 
+              className={`nav-item-node ${link.id === "products" ? "dropdown-link-parent" : ""}`}
+            >
               <NavLink
-                className={({isActive}) => `nav-anchor-element ${isActive ? "active-route" : ""}`}
+                className={({ isActive }) => `nav-anchor-element ${isActive ? "active-route" : ""}`}
                 to={`${link.path}`}
               >
                 {link.title}
               </NavLink>
+
+              {link.id === "products" && (
+                <div className="nav-mega-dropdown-panel">
+                  <div className="dropdown-column">
+                    <h4>Fashion</h4>
+                    <button onClick={() => navigate("/products?category=men's clothing")}>Men's Clothing</button>
+                    <button onClick={() => navigate("/products?category=women's clothing")}>Women's Clothing</button>
+                  </div>
+                  <div className="dropdown-column">
+                    <h4>Lifestyle</h4>
+                    <button onClick={() => navigate("/products?category=jewelery")}>Jewelry</button>
+                    <button onClick={() => navigate("/products?category=electronics")}>Electronics</button>
+                  </div>
+                </div>
+              )}
             </li>
           ))}
         </ul>

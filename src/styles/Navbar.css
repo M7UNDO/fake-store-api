@@ -267,6 +267,74 @@
   display: none;
 }
 
+/* Position anchor configuration for the dynamic node entry */
+.dropdown-link-parent {
+  position: relative;
+}
+
+/* Premium overlay flyout panel configuration */
+.nav-mega-dropdown-panel {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e5e5;
+  border-radius: 0.8rem;
+  display: flex;
+  gap: 4rem;
+  padding: 3rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s cubic-bezier(0.25, 1, 0.5, 1), 
+              transform 0.25s cubic-bezier(0.25, 1, 0.5, 1), 
+              visibility 0.25s;
+  z-index: 500;
+}
+
+/* Show panel smoothly on desktop navigation hover states */
+@media (min-width: 1024px) {
+  .dropdown-link-parent:hover .nav-mega-dropdown-panel {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+/* Vertical categorization groupings layout layout columns */
+.dropdown-column {
+  display: flex;
+  flex-direction: column;
+  min-width: 16rem;
+}
+
+.dropdown-column h4 {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  color: #767676;
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  font-family: var(--roboto, sans-serif);
+}
+
+.dropdown-column button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 0.8rem 0;
+  font-size: 1.4rem;
+  color: #111111;
+  cursor: pointer;
+  font-weight: 500;
+  transition: opacity 0.15s ease;
+}
+
+.dropdown-column button:hover {
+  opacity: 0.6;
+}
+
 @media screen and (max-width: 992px) {
   .topbar-inner {
     padding: 0 2rem;
