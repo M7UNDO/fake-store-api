@@ -1,9 +1,11 @@
-import { useEffect, useRef } from "react";
-import { Outlet } from "react-router-dom";
+import {useEffect, useRef} from "react";
+import {Outlet} from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+ScrollToTop;
 import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
+import {ScrollTrigger} from "gsap/ScrollTrigger";
+import ScrollToTop from "../components/ScrollToTop";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,10 +17,10 @@ export default function MainLayout() {
       // Premium transition window pinning rule
       gsap.fromTo(
         headerRef.current,
-        { 
-          backgroundColor: "rgba(245, 245, 245, 1)", 
+        {
+          backgroundColor: "rgba(245, 245, 245, 1)",
           backdropFilter: "blur(0px)",
-          borderBottomColor: "rgba(0, 0, 0, 0.05)"
+          borderBottomColor: "rgba(0, 0, 0, 0.05)",
         },
         {
           backgroundColor: "rgba(255, 255, 255, 0.85)",
@@ -30,7 +32,7 @@ export default function MainLayout() {
             end: "top -100px",
             scrub: true,
           },
-        }
+        },
       );
     });
 
@@ -42,6 +44,7 @@ export default function MainLayout() {
       <header ref={headerRef} className="sticky-header-container">
         <Navbar />
       </header>
+      <ScrollToTop />
       <main>
         <Outlet />
       </main>

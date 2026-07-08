@@ -3,16 +3,15 @@ import { useNavigate } from "react-router-dom";
 import Hero from "../components/Hero";
 import ProductCard from "../components/ProductCard";
 import Loader from "../components/Loader";
+import Carousel from "../components/Carousel"; 
 import { getProducts } from "../api/products";
 import ClothingHero from "../assets/images/hero/alvin-MYfq3tf34p8-unsplash.jpg";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import "../styles/Home.css";
-// import Slider from "react-slick"; // Keeping slider elements inactive per instruction
 
 export default function Home() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [visibleSlides, setVisibleSlides] = useState(4);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -27,6 +26,19 @@ export default function Home() {
       }
     }
     fetchHomeData();
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 600) setVisibleSlides(1);
+      else if (window.innerWidth < 900) setVisibleSlides(2);
+      else if (window.innerWidth < 1200) setVisibleSlides(3);
+      else setVisibleSlides(4);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   if (loading) return <Loader />;
@@ -51,7 +63,6 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Responsive, interactive category boxes linked to routing queries */}
         <div className="category-container">
           <div 
             className="category-item clothing-cat" 
@@ -111,11 +122,11 @@ export default function Home() {
           </p>
         </div>
         
-        {/* Swapped to a clean responsive fallback grid framework while the carousel is disabled */}
-        <div className="latest-arrival-container fallback-static-grid">
-          {products.slice(5, 9).map((product) => (
-            <div key={product.id} className="carousel-card-wrapper">
+        <div className="latest-arrival-container">
+          <Carousel slidesToShow={visibleSlides}>
+            {products.slice(5, 13).map((product) => (
               <ProductCard
+                key={product.id}
                 src={product.image}
                 alt={product.description}
                 title={product.title}
@@ -123,8 +134,8 @@ export default function Home() {
                 price={`R ${product.price}`}
                 link={product.id}
               />
-            </div>
-          ))}
+            ))}
+          </Carousel>
         </div>
       </section>
     </>
