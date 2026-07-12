@@ -60,3 +60,18 @@
   background: var(--accent-colour-dark);
   border-color: transparent;
 }
+
+@media screen and (max-width: 450px) {
+  .hero-section{
+    align-items: flex-start;
+    padding: 0 2rem;
+  }
+
+  .hero-section h1 {
+    font-size: 4rem;
+  }
+
+  .hero-section p{
+    text-align: left;
+  }
+}
