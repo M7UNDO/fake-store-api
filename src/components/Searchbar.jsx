@@ -3,12 +3,13 @@ import { useNavigate, Link } from "react-router-dom";
 import { getProducts } from "../api/products";
 import "../styles/Searchbar.css";
 
-export default function Searchbar() {
+export default function Searchbar({ autoFocus = false }) {
   const [query, setQuery] = useState("");
   const [allProducts, setAllProducts] = useState([]);
   const [suggestions, setSuggestions] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
   const dropdownRef = useRef(null);
+  const inputRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,6 +23,12 @@ export default function Searchbar() {
     }
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (autoFocus && inputRef.current) {
+      setTimeout(() => inputRef.current.focus(), 100);
+    }
+  }, [autoFocus]);
 
   useEffect(() => {
     if (!query.trim()) {
@@ -58,6 +65,7 @@ export default function Searchbar() {
     <div className="search-bar-wrapper" ref={dropdownRef}>
       <form onSubmit={handleSubmit} className="search-form">
         <input
+          ref={inputRef}
           type="text"
           className="global-search-field"
           placeholder="Search curated goods..."

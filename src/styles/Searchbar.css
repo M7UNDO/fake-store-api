@@ -3,6 +3,12 @@
   width: 32rem;
 }
 
+@media screen and (max-width: 992px) {
+  .search-bar-wrapper {
+    width: 100%;
+  }
+}
+
 .search-form {
   position: relative;
   display: flex;
@@ -107,7 +113,7 @@
 
 .suggestion-price {
   font-size: 1.2rem;
-  color: #ff385c;
+  color: #111111;
   font-weight: 600;
   margin-top: 0.2rem;
 }

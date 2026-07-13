@@ -73,7 +73,8 @@
   }
 }
 
-.product-category {
+.product-detail-page .product-category {
+  font-size: 1.8rem;
   color: gray;
   margin-top: 0.5rem;
 }
