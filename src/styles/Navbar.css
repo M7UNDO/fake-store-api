@@ -7,7 +7,7 @@
   will-change: background-color, backdrop-filter;
 }
 
-.navbar-element {
+.navbar {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -164,7 +164,6 @@
   color: var(--typography-colour);
   text-decoration: none;
   transition: opacity 0.25s ease;
-  z-index: 1005;
 }
 
 .brand-logo:hover {
@@ -267,12 +266,11 @@
   display: none;
 }
 
-/* Position anchor configuration for the dynamic node entry */
+
 .dropdown-link-parent {
   position: relative;
 }
 
-/* Premium overlay flyout panel configuration */
 .nav-mega-dropdown-panel {
   position: absolute;
   top: 100%;
@@ -293,7 +291,6 @@
   z-index: 500;
 }
 
-/* Show panel smoothly on desktop navigation hover states */
 @media (min-width: 1024px) {
   .dropdown-link-parent:hover .nav-mega-dropdown-panel {
     opacity: 1;
@@ -302,7 +299,7 @@
   }
 }
 
-/* Vertical categorization groupings layout layout columns */
+
 .dropdown-column {
   display: flex;
   flex-direction: column;
@@ -356,18 +353,6 @@
     z-index: 1005;
   }
 
-  .burger-active span:nth-child(1) {
-    transform: rotate(45deg) translateY(-0.1rem);
-  }
-
-  .burger-active span:nth-child(2) {
-    transform: scaleX(0);
-  }
-
-  .burger-active span:nth-child(3) {
-    transform: rotate(-45deg) translateY(0.1rem);
-  }
-
   .brand-logo {
     font-size: 3rem;
     position: absolute;
@@ -392,6 +377,10 @@
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
     box-shadow: 2rem 0 5rem rgba(0, 0, 0, 0.05);
     z-index: 1000;
+  }
+
+  .nav-anchor-element::after{
+    width: 0;
   }
 
   .navlinks-list.mobile-drawer-open {

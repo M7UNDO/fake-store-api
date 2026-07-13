@@ -15,16 +15,16 @@
 }
 
 .carousel-slide-item {
-  padding: 0 1rem;
+  padding: 0 0.5rem;
   box-sizing: border-box;
 }
 
 .carousel-nav-btn {
   position: absolute;
-  top: 15rem; 
-  transform: translateY(-50%);
-  width: 4rem;
-  height: 4rem;
+  top: 50%;
+  transform: translateY(-100%);
+  width: 3.5rem;
+  height: 3.5rem;
   border-radius: 50%;
   background: #ffffff;
   border: none;
@@ -32,20 +32,19 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   color: #111111;
   cursor: pointer;
   z-index: 10;
   transition: background-color 0.2s, color 0.2s, transform 0.2s;
 }
 
-
 .prev-btn {
-  left: -4.5rem; 
+  left: 0.5rem;
 }
 
 .next-btn {
-  right: -4.5rem;
+  right: 0.5rem;
 }
 
 .carousel-nav-btn:hover {
@@ -54,5 +53,27 @@
 }
 
 .carousel-nav-btn:active {
-  transform: translateY(-50%) scale(0.95);
+  transform: translateY(-100%) scale(0.95);
+}
+
+@media (min-width: 769px) {
+  .carousel-slide-item {
+    padding: 0 1rem;
+  }
+  
+  .carousel-nav-btn {
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .prev-btn {
+    left: -4.5rem;
+  }
+
+  .next-btn {
+    right: -4.5rem;
+  }
 }

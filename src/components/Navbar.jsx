@@ -18,14 +18,14 @@ export default function Navbar() {
   }, [location]);
 
   return (
-    <nav className="navbar-element">
+    <nav className="navbar">
       <div className="topbar">
         <div className="topbar-inner">
           <span className="topbar-link">Help & Support</span>
           <div className="vertical-divider"></div>
           <div className="auth-trigger-zone">
             {user ? (
-              <span className="user-greeting">Hi, Mfundo</span>
+              <span className="user-greeting">Hi, {user.user_metadata?.username}</span>
             ) : (
               <Link to="/login" className="login-anchor">
                 Login

@@ -1,76 +1,108 @@
 .product-card {
-    position: relative;
-    width: 100%;
-    background-color: white;
-    padding: 1rem 0;
-    transition: all 0.25s ease;
+  position: relative;
+  width: 100%;
+  background-color: white;
+  padding: 1rem 0;
+  transition: all 0.25s ease;
 }
 
 .product-card:hover {
-    transform: translateY(-4px);
+  transform: translateY(-4px);
 }
 
 .product-card-info {
-    padding-top: 1rem;
-    display: flex;
-    flex-direction: column;
+  padding-top: 1rem;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-title {
-    font-weight: 600;
+  font-weight: 600;
+  font-size: 1.4rem;
+}
+
+@media (min-width: 768px) {
+  .product-title {
+    font-size: 1.6rem;
+  }
 }
 
 .product-category {
-    color: gray;
-    font-weight: 450;
-    text-transform: capitalize;
+  color: gray;
+  font-weight: 450;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+}
+
+@media (min-width: 768px) {
+  .product-category {
+    font-size: 1.4rem;
+  }
 }
 
 .product-price {
-    margin-top: 0.5rem;
-    font-family: var(--roboto);
-    font-weight: 700;
+  margin-top: 0.5rem;
+  font-family: var(--roboto);
+  font-weight: 700;
+  font-size: 1.4rem;
+}
+
+@media (min-width: 768px) {
+  .product-price {
+    font-size: 1.6rem;
+  }
 }
 
 .image-holder {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 18rem;
+  background: whitesmoke;
+}
+
+@media (min-width: 768px) {
+  .image-holder {
     height: 30rem;
-    background: whitesmoke;
+  }
 }
 
 .product-link-overlay {
-    position: absolute;
-    height: 100%;
-    width: 100%;
+  position: absolute;
+  height: 100%;
+  width: 100%;
 }
 
 .product-image {
-    width: 70%;
-    max-height: 70%;
-    object-fit: contain;
+  width: 70%;
+  max-height: 70%;
+  object-fit: contain;
 }
 
-/* --- Added Quick Add Overlay Button Rules --- */
 .quick-add-overlay-btn {
-  position: absolute;
-  top: 1.5rem;
-  left: 1.5rem;
-  background: white;
-  border: none;
-  border-radius: 50%;
-  width: 3.5rem;
-  height: 3.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.12);
-  z-index: 5;
-  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease;
-  color: #111;
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .quick-add-overlay-btn {
+    display: flex;
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    width: 3.5rem;
+    height: 3.5rem;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    z-index: 5;
+    transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+    color: #111;
+  }
 }
 
 .quick-add-overlay-btn i {
@@ -83,16 +115,15 @@
   transform: scale(1.05) !important;
 }
 
-/* --- Wishlist Base Layout Controls --- */
 .wishlist-overlay-btn {
   position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
+  top: 1rem;
+  right: 1rem;
   background: white;
   border: none;
   border-radius: 50%;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3.2rem;
+  height: 3.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -103,17 +134,32 @@
   color: #111;
 }
 
+@media (min-width: 768px) {
+  .wishlist-overlay-btn {
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+}
+
 .wishlist-overlay-btn svg {
-  width: 1.8rem;
-  height: 1.8rem;
+  width: 1.6rem;
+  height: 1.6rem;
   transition: fill 0.2s ease, color 0.2s ease;
+}
+
+@media (min-width: 768px) {
+  .wishlist-overlay-btn svg {
+    width: 1.8rem;
+    height: 1.8rem;
+  }
 }
 
 .wishlist-overlay-btn.active {
   color: #ff385c;
 }
 
-/* --- Interaction System Responsive Viewports --- */
 @media (min-width: 1024px) {
   .wishlist-overlay-btn {
     opacity: 0;
@@ -130,7 +176,6 @@
     transform: translateY(0);
   }
 
-  /* Slide in Quick Add button smoothly from the left side on desktop cards */
   .quick-add-overlay-btn {
     opacity: 0;
     transform: translateX(-4px);
@@ -144,8 +189,4 @@
 
 .wishlist-overlay-btn:hover {
   transform: scale(1.05) !important;
-}
-
-.card-add-to-bag-btn {
-    /* Retains your exact standard list add button layout settings below */
 }

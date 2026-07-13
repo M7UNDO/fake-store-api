@@ -1,10 +1,10 @@
 .category-section {
   min-height: 50vh;
-  padding: 6rem 15rem;
+  padding: 3rem 1.5rem;
 }
 
 .section-heading h2 {
-  font-size: 3.5rem;
+  font-size: 2.2rem;
   font-weight: 700;
   letter-spacing: -0.03em;
   margin-bottom: 1rem;
@@ -12,25 +12,25 @@
 
 .section-subheading {
   font-family: var(--roboto);
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   line-height: 1.6;
   opacity: 0.6;
-  margin-bottom: 4rem;
+  margin-bottom: 2.5rem;
 }
 
 .category-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
 }
 
 .category-item {
-  height: 28rem;
+  height: 22rem;
   width: 100%;
   display: flex;
   align-items: flex-end;
   justify-content: flex-start;
-  padding: 3rem;
+  padding: 2rem;
   border-radius: 1.2rem;
   text-transform: uppercase;
   color: white;
@@ -68,39 +68,19 @@
 }
 
 .featured-products-section {
-  padding: 6rem 15rem;
+  padding: 3rem 1.5rem;
 }
 
 .featured-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(3, 26rem);
-  grid-template-areas:
-    "item-1 item-2 item-2"
-    "item-1 item-3 item-4"
-    "item-5 item-5 item-4";
-  gap: 2rem;
-  margin-top: 4rem;
-}
-
-.item-1 {
-  grid-area: item-1;
-}
-.item-2 {
-  grid-area: item-2;
-}
-.item-3 {
-  grid-area: item-3;
-}
-.item-4 {
-  grid-area: item-4;
-}
-.item-5 {
-  grid-area: item-5;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
 }
 
 .featured-item {
   position: relative;
+  height: 26rem;
   border-radius: 1.2rem;
   background-size: contain;
   background-repeat: no-repeat;
@@ -118,17 +98,15 @@
 .featured-item-overlay {
   position: absolute;
   inset: 0;
-
   background: linear-gradient(to top, rgba(0, 0, 0, 0.55) 0%, rgba(0, 0, 0, 0.15) 50%, transparent 100%);
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: 2.5rem;
   color: white;
-  opacity: 1; 
+  opacity: 1;
   transition: background 0.3s ease;
 }
-
 
 .featured-item:hover .featured-item-overlay {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.2) 60%, transparent 100%);
@@ -150,7 +128,7 @@
 }
 
 .latest-arrivals-section {
-  padding: 6rem 15rem 10rem 15rem;
+  padding: 3rem 1.5rem;
 }
 
 .latest-arrival-container {
@@ -158,26 +136,87 @@
   position: relative;
 }
 
-
-@media (max-width: 1200px) {
+@media (min-width: 481px) {
   .category-section,
   .featured-products-section,
   .latest-arrivals-section {
+    padding: 4rem 2rem;
+  }
+
+  .section-heading h2 {
+    font-size: 2.6rem;
+  }
+
+  .section-subheading {
+    font-size: 1.4rem;
+  }
+}
+
+@media (min-width: 769px) {
+  .section-heading h2 {
+    font-size: 3rem;
+  }
+
+  .section-subheading {
+    font-size: 1.5rem;
+    margin-bottom: 4rem;
+  }
+
+  .category-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .category-item {
+    height: 28rem;
+    padding: 3rem;
+  }
+
+  .featured-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 26rem);
+    grid-template-areas:
+      "item-1 item-2 item-2"
+      "item-1 item-3 item-4"
+      "item-5 item-5 item-4";
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .item-1 { grid-area: item-1; }
+  .item-2 { grid-area: item-2; }
+  .item-3 { grid-area: item-3; }
+  .item-4 { grid-area: item-4; }
+  .item-5 { grid-area: item-5; }
+
+  .featured-item {
+    height: auto;
+  }
+}
+
+@media (min-width: 1025px) {
+  .category-section,
+  .featured-products-section {
     padding: 6rem 4rem;
   }
 
-}
+  .latest-arrivals-section {
+    padding: 6rem 4rem 10rem 4rem;
+  }
 
-@media (max-width: 768px) {
-  .category-container {
-    grid-template-columns: 1fr;
-  }
-  .featured-grid {
-    display: flex;
-    flex-direction: column;
-  }
-  .featured-item {
-    height: 26rem;
+  .section-heading h2 {
+    font-size: 3.5rem;
   }
 }
 
+@media (min-width: 1400px) {
+  .category-section,
+  .featured-products-section {
+    padding: 6rem 15rem;
+  }
+
+  .latest-arrivals-section {
+    padding: 6rem 15rem 10rem 15rem;
+  }
+}

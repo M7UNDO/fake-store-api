@@ -9,6 +9,7 @@ import "../styles/ProductDetail.css";
 export default function ProductDetail() {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
+  const [selectedSize, setSelectedSize] = useState("M");
   const { addToCart, cartItems } = useContext(CartContext);
   const { toggleFavourite, isFavourite } = useContext(FavouritesContext);
 
@@ -31,6 +32,11 @@ export default function ProductDetail() {
   const isClothing = product.category.includes("clothing");
   const favourited = isFavourite(product.id);
 
+  const handleAddToCartClick = () => {
+    const productWithSize = isClothing ? { ...product, size: selectedSize } : product;
+    addToCart(productWithSize);
+  };
+
   return (
     <div className="product-detail-page">
       <div className="details-image-holder">
@@ -47,12 +53,20 @@ export default function ProductDetail() {
 
         {isClothing && (
           <div className="size-container">
-            {["XS", "S", "M", "L", "XL"].map(sz => <button key={sz}>{sz}</button>)}
+            {["XS", "S", "M", "L", "XL"].map((sz) => (
+              <button
+                key={sz}
+                className={selectedSize === sz ? "active" : ""}
+                onClick={() => setSelectedSize(sz)}
+              >
+                {sz}
+              </button>
+            ))}
           </div>
         )}
 
         <div className="product-btn-container">
-          <button className="add-to-cart" onClick={() => addToCart(product)}>
+          <button className="add-to-cart" onClick={handleAddToCartClick}>
             {currentQuantity > 0 ? `Add to Bag (${currentQuantity})` : "Add to Bag"}
           </button>
           

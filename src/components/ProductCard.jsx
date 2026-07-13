@@ -15,14 +15,22 @@ export default function ProductCard({ src, alt, title, category, price, link }) 
   const handleAddToBag = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    addToCart({
+    
+    const isClothing = category.toLowerCase().includes("clothing");
+    const baseProduct = {
       id: link,
       title,
       category,
       price: parseFloat(price.replace(/[^0-9.]/g, "")),
       image: src,
       description: alt
-    });
+    };
+
+    if (isClothing) {
+      baseProduct.size = "M";
+    }
+
+    addToCart(baseProduct);
   };
 
   const handleFavouriteClick = (e) => {

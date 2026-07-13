@@ -4,13 +4,24 @@ import { CartContext } from "../context/CartContext";
 import "../styles/Cart.css";
 
 export default function Cart() {
-  const { cartItems, totalPrice, updateQuantity, clearCart } = useContext(CartContext);
+  const { cartItems, totalPrice, updateQuantity, clearCart, addToCart } = useContext(CartContext);
   const navigate = useNavigate();
 
   const handleCheckout = () => {
     alert("Thank you for shopping at The Pavilion! Your purchase was successful.");
     clearCart();
     navigate("/products");
+  };
+
+  const handleSizeChange = (item, newSize) => {
+    const updatedItem = { ...item, size: newSize };
+    const currentQty = item.quantity;
+    
+    updateQuantity(item.id, -currentQty);
+    
+    for (let i = 0; i < currentQty; i++) {
+      addToCart(updatedItem);
+    }
   };
 
   if (cartItems.length === 0) {
@@ -45,6 +56,22 @@ export default function Cart() {
                 <div className="details-header">
                   <h3>{item.title}</h3>
                   <p className="cart-row-category">{item.category}</p>
+                  {item.category.toLowerCase().includes("clothing") && (
+                    <div className="cart-size-editor">
+                      <label htmlFor={`size-select-${item.id}`}>Size:</label>
+                      <select
+                        id={`size-select-${item.id}`}
+                        value={item.size || "M"}
+                        onChange={(e) => handleSizeChange(item, e.target.value)}
+                      >
+                        {["XS", "S", "M", "L", "XL"].map((sz) => (
+                          <option key={sz} value={sz}>
+                            {sz}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  )}
                 </div>
                 <p className="cart-row-unit-price">R {Number(item.price).toFixed(2)}</p>
               </div>
