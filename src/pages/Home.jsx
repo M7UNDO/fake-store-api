@@ -76,7 +76,7 @@ export default function Home() {
             onClick={() => navigate("/products?category=jewelery")}
             style={{ cursor: "pointer" }}
           >
-            <h3>Accessories</h3>
+            <h3>Jewelery</h3>
           </div>
           <div 
             className="category-item electronics-cat" 

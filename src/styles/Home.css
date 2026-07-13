@@ -60,7 +60,7 @@
 }
 
 .category-item h3 {
-  font-family: var(--rubik);
+  font-family: var(--roboto);
   font-weight: 600;
   font-size: 2rem;
   letter-spacing: 0.05em;
@@ -184,11 +184,21 @@
     margin-top: 4rem;
   }
 
-  .item-1 { grid-area: item-1; }
-  .item-2 { grid-area: item-2; }
-  .item-3 { grid-area: item-3; }
-  .item-4 { grid-area: item-4; }
-  .item-5 { grid-area: item-5; }
+  .item-1 {
+    grid-area: item-1;
+  }
+  .item-2 {
+    grid-area: item-2;
+  }
+  .item-3 {
+    grid-area: item-3;
+  }
+  .item-4 {
+    grid-area: item-4;
+  }
+  .item-5 {
+    grid-area: item-5;
+  }
 
   .featured-item {
     height: auto;
@@ -196,6 +206,9 @@
 }
 
 @media (min-width: 1025px) {
+  .section-subheading {
+    max-width: 60%;
+  }
   .category-section,
   .featured-products-section {
     padding: 6rem 4rem;

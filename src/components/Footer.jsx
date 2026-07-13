@@ -64,13 +64,10 @@ export default function Footer() {
           <h4>Connect</h4>
           <p className="connect-context-text">Follow our seasonal lookbooks and release journals.</p>
           <div className="social-icon-row">
-            <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram Profile">
-              <i className="fa-brands fa-instagram"></i>
+            <a href="https://www.linkedin.com/in/mfundo-dhlamini" target="_blank" rel="noreferrer" aria-label="LinkedIn Profile">
+              <i class="fa-brands fa-linkedin-in"></i>
             </a>
-            <a href="https://x.com" target="_blank" rel="noreferrer" aria-label="X Profile">
-              <i className="fa-brands fa-x-twitter"></i>
-            </a>
-            <a href="mailto:support@thepavilion.com" aria-label="Email Correspondence">
+            <a href="mailto:dhlaminimfundo1@gmail.com" aria-label="Email Correspondence">
               <i className="fa-regular fa-envelope"></i>
             </a>
           </div>
