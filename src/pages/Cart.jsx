@@ -1,11 +1,42 @@
-import React, { useContext } from "react";
+import React, { useContext, useRef } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 import "../styles/Cart.css";
 
 export default function Cart() {
   const { cartItems, totalPrice, updateQuantity, clearCart, addToCart } = useContext(CartContext);
   const navigate = useNavigate();
+  const containerRef = useRef();
+
+  useGSAP(() => {
+    if (cartItems.length > 0) {
+      gsap.from(".cart-item-row", {
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        stagger: 0.1,
+        ease: "power3.out",
+      });
+      
+      gsap.from(".order-summary-card", {
+        y: 30,
+        opacity: 0,
+        duration: 0.6,
+        delay: 0.2,
+        ease: "power3.out",
+      });
+    } else {
+      gsap.from(".empty-cart-content > *", {
+        y: 20,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: "power2.out",
+      });
+    }
+  }, { scope: containerRef, dependencies: [cartItems.length] });
 
   const handleCheckout = () => {
     alert("Thank you for shopping at The Pavilion! Your purchase was successful.");
@@ -26,7 +57,7 @@ export default function Cart() {
 
   if (cartItems.length === 0) {
     return (
-      <div className="empty-cart-view">
+      <div className="empty-cart-view" ref={containerRef}>
         <div className="empty-cart-content">
           <i className="fa-solid fa-bag-shopping empty-icon"></i>
           <h2>Your Shopping Bag is Empty</h2>
@@ -38,7 +69,7 @@ export default function Cart() {
   }
 
   return (
-    <div className="cart-page-container">
+    <div className="cart-page-container" ref={containerRef}>
       <div className="cart-header-wrapper">
         <h1 className="cart-title">Your Shopping Bag</h1>
         <span className="cart-count-tracker">({cartItems.reduce((a, b) => a + b.quantity, 0)} items)</span>
@@ -56,24 +87,25 @@ export default function Cart() {
                 <div className="details-header">
                   <h3>{item.title}</h3>
                   <p className="cart-row-category">{item.category}</p>
-                  {item.category.toLowerCase().includes("clothing") && (
-                    <div className="cart-size-editor">
-                      <label htmlFor={`size-select-${item.id}`}>Size:</label>
+                </div>
+                
+                {item.category.toLowerCase().includes("clothing") && (
+                  <div className="cart-size-editor">
+                    <label htmlFor={`size-select-${item.id}`}>Size:</label>
+                    <div className="custom-select-wrapper">
                       <select
                         id={`size-select-${item.id}`}
                         value={item.size || "M"}
                         onChange={(e) => handleSizeChange(item, e.target.value)}
                       >
                         {["XS", "S", "M", "L", "XL"].map((sz) => (
-                          <option key={sz} value={sz}>
-                            {sz}
-                          </option>
+                          <option key={sz} value={sz}>{sz}</option>
                         ))}
                       </select>
+                      <i className="fa-solid fa-chevron-down select-icon"></i>
                     </div>
-                  )}
-                </div>
-                <p className="cart-row-unit-price">R {Number(item.price).toFixed(2)}</p>
+                  </div>
+                )}
               </div>
 
               <div className="quantity-controller">
