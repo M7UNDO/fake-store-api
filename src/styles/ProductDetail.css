@@ -7,6 +7,10 @@
   text-transform: capitalize;
 }
 
+.product-btn-container button{
+  font-size: 1.6rem;
+}
+
 @media (min-width: 768px) {
   .product-detail-page {
     flex-direction: row;
@@ -89,6 +93,7 @@
   align-items: stretch;
   gap: 1rem;
   margin-top: 1rem;
+  margin-bottom: 5rem;
 }
 
 @media (min-width: 480px) {

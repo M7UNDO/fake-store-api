@@ -6,7 +6,7 @@
   border-top: 1px solid #222224;
 }
 
-/* Four-Column Layout Control */
+
 .footer-top-grid {
   max-width: 1400px;
   margin: 0 auto;
@@ -38,7 +38,6 @@
   max-width: 340px;
 }
 
-/* Premium Column Headings */
 .footer-column h4 {
   font-size: 1.3rem;
   text-transform: uppercase;
@@ -48,7 +47,6 @@
   color: #ffffff;
 }
 
-/* Link Resets & Buttons Layout */
 .footer-links-list {
   list-style: none;
   padding: 0;
@@ -84,7 +82,6 @@
   margin-bottom: 2rem;
 }
 
-/* Social Media Channels Row */
 .social-icon-row {
   display: flex;
   gap: 2rem;
@@ -103,7 +100,6 @@
   transform: translateY(-2px);
 }
 
-/* Understated Journal Newsletter Input */
 .footer-newsletter-form {
   display: flex;
   flex-direction: column;
@@ -157,7 +153,6 @@
   color: #ffffff;
 }
 
-/* Minimalist Copyright Strip */
 .footer-bottom-strip {
   max-width: 1400px;
   margin: 0 auto;
@@ -183,7 +178,6 @@
   color: #ffffff;
 }
 
-/* Layout Responsiveness Adaptations */
 @media (max-width: 1024px) {
   .footer-top-grid {
     grid-template-columns: 1fr 1fr;
@@ -193,6 +187,7 @@
 
 @media (max-width: 600px) {
   .global-footer-element {
+    margin-top: 5rem;
     padding: 6rem 2.5rem 3rem 2.5rem;
   }
   .footer-top-grid {
